@@ -1,0 +1,6 @@
+service: door
+runtime: nodejs8
+
+env_variables:
+  PUBSUB_TOPIC: YOUR_PUBSUB_TOPIC
+  PUBSUB_VERIFICATION_TOKEN: YOUR_RANDOM_TOEKN

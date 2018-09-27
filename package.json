@@ -1,0 +1,42 @@
+{
+  "name": "auto-control-door-server",
+  "description": "Auto Control Door Server",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Akiicat",
+  "engines": {
+    "node": "8.x.x"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "exit 1"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.16.5",
+    "body-parser": "1.18.2",
+    "express": "^4.16.3",
+    "pug": "^2.0.1",
+    "safe-buffer": "5.1.1"
+  },
+  "cloud-repo-tools": {
+    "requiresProjectId": true,
+    "requiresKeyFile": true,
+    "test": {
+      "app": {
+        "requiredEnvVars": [
+          "PUBSUB_TOPIC",
+          "PUBSUB_VERIFICATION_TOKEN"
+        ],
+        "msg": "Messages received by this instance",
+        "substitutions": "YOUR_TOPIC_NAME=$PUBSUB_TOPIC,YOUR_VERIFICATION_TOKEN=$PUBSUB_VERIFICATION_TOKEN"
+      },
+      "build": {
+        "requiredEnvVars": [
+          "PUBSUB_TOPIC",
+          "PUBSUB_VERIFICATION_TOKEN"
+        ]
+      }
+    }
+  }
+}
