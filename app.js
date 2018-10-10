@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const Buffer = require('safe-buffer').Buffer;
 const process = require('process'); // Required for mocking environment variables
+const cors = require('cors');
 
 // By default, the client will authenticate using the service account file
 // specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable and use
@@ -30,6 +31,8 @@ const PUBSUB_VERIFICATION_TOKEN = process.env.PUBSUB_VERIFICATION_TOKEN;
 
 const topic = pubsub.topic(process.env.PUBSUB_TOPIC);
 const publisher = topic.publisher();
+
+app.use(cors());
 
 // [START]
 app.post('/pubsub/push', jsonBodyParser, (req, res) => {
